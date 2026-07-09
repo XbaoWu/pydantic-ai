@@ -472,6 +472,14 @@ agent = Agent(model)
 ...
 ```
 
+!!! note "PDF and document file input is not supported"
+    The DashScope compatible-mode Chat Completions API does not accept document content parts (`type='file'`).
+    PDF [`DocumentUrl`][pydantic_ai.messages.DocumentUrl] and non-`text/plain` document
+    [`BinaryContent`][pydantic_ai.messages.BinaryContent] (for example `application/pdf`) are not supported with
+    [`AlibabaProvider`][pydantic_ai.providers.alibaba.AlibabaProvider].
+    Plain `text/plain` [`BinaryContent`][pydantic_ai.messages.BinaryContent] is sent as inline text and can work.
+    Image input with vision models such as `qwen-vl-plus` is supported.
+
 ### Ollama
 
 See [Ollama](ollama.md) for dedicated Ollama documentation, including structured output and Ollama Cloud limitations.
